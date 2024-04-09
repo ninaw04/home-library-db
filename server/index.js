@@ -4,10 +4,12 @@ const express = require('express')
 const app = express()
 const mysql = require('mysql')
 const PORT = 8080;
+const cors = require('cors')
 
 const db = mysql.createConnection( config.connect )
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.json('Backend for home library catalogue')
@@ -41,9 +43,9 @@ app.get('/books', (req, res) => {
 })
 
 // Get specific book
-app.get('/books/{id}', (req, res) => {
+app.get('/books/:id', (req, res) => {
     const {id} = req.params
-    const q = 'SELECT * FROM Books where id = {`id`}'
+    const q = `SELECT * FROM Books where BookID = ${id}`
 
     db.query(q, (err, data) => {
         if(err) return res.json(err)
@@ -51,8 +53,10 @@ app.get('/books/{id}', (req, res) => {
     })
 })
 
-app.get('/books/{id}/title', (req, res) => {
-    const q = 'SELECT Title FROM Books where id = {`id`}'
+// Specific Title for search purposes?
+app.get('/books/:id/title', (req, res) => {
+    const {id} = req.params
+    const q = `SELECT Title FROM Books where BookID = ${id}`
 
     db.query(q, (err, data) => {
         if(err) return res.json(err)
