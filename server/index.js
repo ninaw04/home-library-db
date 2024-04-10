@@ -17,13 +17,14 @@ app.get('/', (req, res) => {
 
 // Create
 app.post('/books', (req, res) => {
-    const q = 'INSERT INTO Books (`title`, `author`, `genre`, `lang`, `location`) VALUES (?)'
+    const q = 'INSERT INTO Books (`title`, `author`, `genre`, `lang`, `location`, `cover`) VALUES (?)'
     const values = [
         req.body.title,
         req.body.author,
         req.body.genre,
         req.body.lang,
-        req.body.location
+        req.body.location,
+        req.body.cover
     ]
 
     db.query(q, [values], (err, data) => {
@@ -65,7 +66,9 @@ app.get('/books/:id/title', (req, res) => {
 })
 
 // Update
-
+app.patch('/books/:id', (req, res) => {
+    const {id} = req.params
+})
 
 
 // Delete

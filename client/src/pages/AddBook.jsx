@@ -1,34 +1,56 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddBook = () => {
   const [book, setBook] = useState({
-    Title:"",
-    Author:"",
-    Genre:"",
-    Language:"select",
-    Location:"",
-    Cover:"",
+    title:"", 
+    author:"",
+    genre:"",
+    language:"select",
+    location:"select",
+    cover:"",
   })
+
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setBook(prev => ({...prev, [e.target.name]: e.target.value}))
+  }
+
+  const handleClick = async e => {
+    e.preventDefault()
+    try {
+      await axios .post("http://localhost:8080/books", book )
+      navigate("/")
+    } catch(err) {
+      console.log(err)
+    }
+  }
+ 
+  console.log(book)
   return (
     <div className='form'>
       <h1>Add New Book</h1>
-      <input type="text" placeholder='Title' />
-      <input type="text" placeholder='Author' />
-      <input type="text" placeholder='Genre' />
-      <select name='language'>
+      <input type="text" placeholder='Title' onChange={handleChange} name="title"/>
+      <input type="text" placeholder='Author' onChange={handleChange} name="author"/>
+      <input type="text" placeholder='Genre' onChange={handleChange} name="genre"/>
+      <select onChange={handleChange} name='language'>
         <option value="select">Language</option>
         <option value="chinese">Chinese</option>
         <option value="english">English</option>
         <option value="spanish">Spanish</option>
         <option value="french">French</option>
       </select>
-      <select name='Location'>
+      <select onChange={handleChange} name='location'>
         <option value="select">Location</option>
-        <option value="chinese">BookCase1</option>
-        <option value="english">BookCase2</option>
-        <option value="spanish">BookCase3</option>
-        <option value="french">BookCase4</option>
+        <option value="case1">BookCase1</option>
+        <option value="case2">BookCase2</option>
+        <option value="case3">BookCase3</option>
+        <option value="case4">BookCase4</option>
       </select>
+      <input type="text" placeholder='Cover' onChange={handleChange} name="cover"/>
+      <button onClick={handleClick}>Add Book</button>
     </div>
   )
 }
