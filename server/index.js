@@ -72,6 +72,15 @@ app.patch('/books/:id', (req, res) => {
 
 
 // Delete
+app.delete('/books/:id', (req, res) => {
+    const bookID = req.params.id
+    const q = 'DELETE FROM books WHERE BookID = ?'
+
+    db.query(q, [bookID], (err, data) => {
+        if(err) return res.json(err)
+        return res.json("Book has been deleted")
+    })
+})
 
 app.listen(PORT, () => {
     console.log(`connected on http://localhost:${PORT}`)

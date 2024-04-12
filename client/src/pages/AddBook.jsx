@@ -34,7 +34,18 @@ const AddBook = () => {
       <h1>Add New Book</h1>
       <input type="text" placeholder='Title' onChange={handleChange} name="title"/>
       <input type="text" placeholder='Author' onChange={handleChange} name="author"/>
-      <input type="text" placeholder='Genre' onChange={handleChange} name="genre"/>
+      {/* <input type="text" placeholder='Genre' onChange={handleChange} name="genre"/> */}
+      <select onChange={handleChange} name='genre'>
+        <option value="select">Genre</option>
+        <option value="fiction">Fiction</option>
+        <option value="nonfiction">Non-Fiction</option>
+        <option value="sci-fi">Sci-fi</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="mystery">Mystery</option>
+        <option value="classics">Classics</option>
+        <option value="history">History</option>
+        <option value="other">Other</option>
+      </select>
       <select onChange={handleChange} name='language'>
         <option value="select">Language</option>
         <option value="chinese">Chinese</option>

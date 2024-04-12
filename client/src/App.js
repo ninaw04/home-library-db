@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Books from "./pages/Books"
-import AddBook from "./pages/AddBook";
-import UpdateBook from "./pages/UpdateBook";
+import AddBook from "./pages/AddBook"
+import UpdateBook from "./pages/UpdateBook"
+import "./style.css"
 
 function App() {
   return (
