@@ -39,7 +39,7 @@ const Books = () => {
           <span>{book.Lang}</span>
           <span>{book.Location}</span>
           <button className='delete' onClick={()=>handleDelete(book.BookID)}>Delete</button>
-          <button className='update'>Update</button>
+          <button className='update'><Link to={`/updateBook/${book.BookID}`}>Update</Link></button>
         </div>
       ))}
     </div>
@@ -48,8 +48,3 @@ const Books = () => {
 }
 
 export default Books
-
-// flowers/concrete,sharp edges
-// dull, calm, peaceful/sharp and loud, noisy
-
-// daily: explore 3 generated colors with any mediums

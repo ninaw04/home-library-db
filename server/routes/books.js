@@ -63,7 +63,7 @@ router.get('/books/:id/title', (req, res) => {
 // Update Book
 router.put('/books/:id', (req, res) => {
   const bookID = req.params.id
-  const q = "UPDATE books SET `Title` = ?, `Author` = ?, `Genre` = ?, `Lang` = ?, `Location` = ?, `Cover` = ? WHERE BookID = ? "
+  const q = "UPDATE books SET `title` = ?, `author` = ?, `genre` = ?, `lang` = ?, `location` = ?, `cover` = ? WHERE BookID = ? "
   const values = [
       req.body.title,
       req.body.author,

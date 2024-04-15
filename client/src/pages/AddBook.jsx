@@ -21,7 +21,7 @@ const AddBook = () => {
   const handleClick = async e => {
     e.preventDefault()
     try {
-      await axios .post("http://localhost:8080/books", book )
+      await axios.post("http://localhost:8080/books", book )
       navigate("/")
     } catch(err) {
       console.log(err)
@@ -34,9 +34,9 @@ const AddBook = () => {
       <h1>Add New Book</h1>
       <input type="text" placeholder='Title' onChange={handleChange} name="title"/>
       <input type="text" placeholder='Author' onChange={handleChange} name="author"/>
-      {/* <input type="text" placeholder='Genre' onChange={handleChange} name="genre"/> */}
       <select onChange={handleChange} name='genre'>
         <option value="select">Genre</option>
+        <option value="contemporary">Contemporary</option>
         <option value="fiction">Fiction</option>
         <option value="nonfiction">Non-Fiction</option>
         <option value="sci-fi">Sci-fi</option>

@@ -45,3 +45,9 @@ img{
     object-fit: cover;
     background-color: blanchedalmond;
 }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
