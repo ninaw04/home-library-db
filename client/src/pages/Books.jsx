@@ -29,6 +29,7 @@ const Books = () => {
 
   return <div>
     <h1>Home Library Catalogue</h1>
+    <button><Link to="/reading">Reading List</Link></button>
     <div className="books">
       {books.map((book) => (
         <div className="book" key={book.BookID}>
