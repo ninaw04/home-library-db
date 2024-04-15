@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var cors = require('cors');
-const config = require('../../.userConfig')
 
 router.use(cors());
 
@@ -42,7 +41,7 @@ router.get('/books', (req, res) => {
 // Get specific book
 router.get('/books/:id', (req, res) => {
   const {id} = req.params
-  const q = `SELECT * FROM Books where BookID = ${id}`
+  const q = `SELECT * FROM Books where BookID = '${id}'`
 
   db.query(q, (err, data) => {
       if(err) return res.json(err)
