@@ -6,14 +6,17 @@ import "./style.css"
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Books/>}/>
-          <Route path="/addBook" element={<AddBook/>}/>
-          <Route path="/updateBook/:id" element={<UpdateBook/>}/>
-        </Routes>
-      </BrowserRouter>
+    <div>
+      
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Books />} />
+            <Route path="/addBook" element={<AddBook />} />
+            <Route path="/updateBook/:id" element={<UpdateBook />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
